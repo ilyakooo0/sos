@@ -16,6 +16,10 @@ public func routes(_ router: Router) throws {
         return postModel.getPost(for: try req.parameters.next(Int.self), on: req)
     }
     
+    router.get("openSockets") { (req)  in
+        return OpenSockets.sockets.count
+    }
+    
     // Example of configuring a controller
     let todoController = TodoController()
     router.get("todos", use: todoController.index)

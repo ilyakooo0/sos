@@ -54,6 +54,12 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         }
     }
     
+    ws.get("test") { (ws, req) in
+        ws.onText({ (ws, text) in
+            ws.send("pong")
+        })
+    }
+    
     services.register(ws, as: WebSocketServer.self)
 
 }
